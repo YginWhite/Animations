@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Distance animation</title>
+	<style>
+		body {position: relative; border: 1px solid silver; height: 600px;}
+		#m {width: 10px; height: 10px; position: absolute; left: 0px; top: 300px; border: 1px solid green; background-color: green;}
+	</style>
+</head>
+<body>
+	<div id="m"></div>
+	<script src="animate_Functions/animateDistance.js"></script>
+	<script>
+		var d = document.getElementById('m');
+		move_v1(d, 0, 100, 'left', 1000, 25);
+	</script>
+</body>
+</html>
