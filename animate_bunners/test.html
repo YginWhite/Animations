@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Bunners</title>
 	<style>
-		body {width: 50%;}
+		body {width: 70%;}
 	</style>
 	<script src="js/jquery-2.2.0.js"></script>
 </head>
@@ -38,7 +38,6 @@
 				'height': width / 4 + 'px',
 				'background-image': 'url("imgs/stars.png")',
 				'background-size': 'cover',
-				'margin': '0 auto',
 				'position': 'absolute',
 				'overflow': 'hidden'
 			});
@@ -113,9 +112,24 @@
 
 		$(document).ready(function() {
 			setTimeout(function () {
-				makeSunBunner_v1('body');
+				//makeSunBunner_v1('body');
 			}, 1000);
 		});
+	</script>
+
+	<script src="js/makebunners.js"></script>
+	<script>
+		$(document).ready(function () {
+			makeSunBunner_v2(
+				'body',
+				{
+					day: 'imgs/clouds.png',
+					night: 'imgs/stars.png',
+					sun: 'imgs/sun_all.png',
+					cloud: 'imgs/cloud.png'
+				},
+				'Life is beautiful!!!');
+		}, 300);
 	</script>
 </body>
 </html>
