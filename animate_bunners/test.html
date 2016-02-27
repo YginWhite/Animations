@@ -4,132 +4,49 @@
 	<meta charset="UTF-8">
 	<title>Bunners</title>
 	<style>
-		body {width: 70%;}
+		body {width: 60%;}
 	</style>
 	<script src="js/jquery-2.2.0.js"></script>
 </head>
 <body>
+	<button id="b1">banner1</button>
+	<button id ="b2">banner2</button>
 	<script>
-		function makeSunBunner_v1(where) {
-			where = $(where);
 
-			// create bunner's body
-			var container = $('<div></div>');
-			where.append(container);
-
-			// find and set container size
-			var width = Math.round(where.width() * 0.9);
-			container.width(width);
-			container.height(width / 4);
-			container.css({
-				'border': '1px solid black',
-				'position': 'relative',
-				'overflow': 'hidden',
-				'background-image': 'url("imgs/clouds.png")',
-				'background-size': 'cover'
-			});
-
-			// background stars container
-			var stars = $('<div></div>');
-			container.append(stars);
-
-			stars.css({
-				'width': width + 'px',
-				'height': width / 4 + 'px',
-				'background-image': 'url("imgs/stars.png")',
-				'background-size': 'cover',
-				'position': 'absolute',
-				'overflow': 'hidden'
-			});
-
-			// create the sun
-			var sun = $('<div></div>');
-			container.append(sun);
-			sun.css({
-				'width': width / 9 + 'px',
-				'height': width / 9 + 'px',
-				'background-image': 'url("imgs/sun_all.png")',
-				'background-size': 'cover',
-				'position': 'absolute',
-				'left': width + 'px',
-				'top': (width / 4) + 'px'
-			});
-
-			// create the cloud under sun
-			var cloudSun = $('<div></div>');
-			cloudSun.css({
-				'width': width / 8 + 'px',
-				'height': width / 15 + 'px',
-				'background-image': 'url("imgs/cloud.png")',
-				'background-size': 'cover',
-				'position': 'absolute',
-				'left': width / 12 + 'px',
-				'top': width / 12 + 'px'
-			});
-
-			// create first text
-			var txt1 = $('<p>Life is beautiful</p>');
-			txt1.css({
-				'position': 'absolute',
-				'color': 'white',
-				'left': width / 2.5 + 'px',
-				'top': width / 20 + 'px',
-				'font-size': '1.1em'
-			});
-
-			// when animate 'left' done starts animate 'opacity' and 'up/down' the sun
-			// animate 'left' and 'top' at the same time
-			setTimeout(function () {
-				sun.animate({'left': '-=' + width / 1.02 + 'px'}, 2000, function () {
-					var flag = true;
-					var dist = 10;
-					var h = setInterval(function () {
-						if (flag) {
-							sun.animate({'top': '+=' + dist + 'px'}, 1000, function () { flag = false; });
-						} else {
-							sun.animate({'top': '-=' + dist + 'px'}, 1000, function () { flag = true; });
-						}
-					}, 1100);
-					stars.animate({'opacity': '0'}, {
-						duration: 1000,
-						queue: false,
-						complete: function () {
-							container.append(cloudSun);
-							setTimeout(function () {
-								txt1.html('and its true!');
-							}, 500);
-						}
-					});
-					container.append(txt1);
-				});
-
-				sun.animate({'top': '-=' + width / 4.4 + 'px'}, {
-					duration: 1000,
-					queue: false,
-				});
-			}, 500);
-		}
-
-		$(document).ready(function() {
-			setTimeout(function () {
-				//makeSunBunner_v1('body');
-			}, 1000);
-		});
 	</script>
 
 	<script src="js/makebunners.js"></script>
 	<script>
 		$(document).ready(function () {
-			makeSunBunner_v2(
-				'body',
-				{
-					day: 'imgs/clouds.png',
-					night: 'imgs/stars.png',
-					sun: 'imgs/sun_all.png',
-					cloud: 'imgs/cloud.png'
-				},
-				'Life is beautiful!!!');
-		}, 300);
+			$('#b1').click(function(event) {
+				$('div').remove();
+				makeSunBunner_v2(
+					'body',
+					{
+						day: 'imgs/clouds.png',
+						night: 'imgs/stars.png',
+						sun: 'imgs/sun_all.png',
+						cloud: 'imgs/cloud.png'
+					},
+					'Life is beautiful!!!'
+				);
+			});
+
+			$('#b2').click(function(event) {
+				$('div').remove();
+				makeSunBunner_v3(
+					'body',
+					{
+						day: 'imgs/clouds.png',
+						night: 'imgs/stars.png',
+						cat: 'imgs/cat.png'
+					},
+					'Its just for you'
+				);
+			});
+
+			
+		});
 	</script>
 </body>
 </html>
